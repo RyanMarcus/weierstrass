@@ -18,15 +18,18 @@
 // 
 // { end copyright } 
  
- 
- 
-"use strict";
-let bs = require("binarysearch");
-let _ = require("lodash");
+
+const bs = require("binarysearch");
+const _ = { "isArray": require("lodash/isArray"),
+            "first": require("lodash/first"),
+            "last": require("lodash/last"),
+            "range": require("lodash/range") };
+          
 
 
 module.exports.linearInterpolate = linearInterpolate;
 function linearInterpolate(points) {
+    "use strict";
     points.sort((a,b) => a[0] - b[0]);
     
     return function(x) {
@@ -53,10 +56,12 @@ function linearInterpolate(points) {
 }
 
 function simpsonsRule(func, a, b) {
+    "use strict";
     return (b - a)/6 * (func(a) + 4 * func((a + b)/2) + func(b));
 }
 
 function verifyPoints(points) {
+    "use strict";
     if (points.length < 2)
         throw "You must pass at least two points to take a Weierstrass transform";
 
@@ -91,7 +96,6 @@ function weierstrass(points, t=1, step=0.01) {
             _.range(minX, maxX, step)
             .map(v => simpsonsRule(kernel, v, v + step))
             .reduce((accum, curr) => accum + curr);
-
     };    
 }
 
