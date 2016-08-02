@@ -53,6 +53,18 @@ describe("weierstrass transform", function() {
             let f = ws.weierstrass(["a", [0,0]]);
         }, /two items/);
     });
+
+    it("should fail when given functions without zero endpoints", function() {
+        assert.throws(() => {
+            let f = ws.weierstrass([[0,4], [4, 8], [8, 0]]);
+        }, /zero/);
+    });
+
+        it("should fail when given functions without zero endpoints", function() {
+        assert.throws(() => {
+            let f = ws.weierstrass([[0,0], [4, 8], [8, 4]]);
+        }, /zero/);
+    });
 });
 
 

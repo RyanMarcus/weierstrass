@@ -66,10 +66,10 @@ function verifyPoints(points) {
                    "but saw: " + JSON.stringify(x));
     }
 
-    if (0.0 - _.first(points)[1] > 0.001)
+    if (Math.abs(0.0 - _.first(points)[1]) > 0.001)
         throw ("The Y coordinate of the point with the minimal X coordinate must be zero.");
 
-    if (0.0 - _.last(points)[1] > 0.001)
+    if (Math.abs(0.0 - _.last(points)[1]) > 0.001)
         throw ("The Y coordinate of the point with the maximal X coordinate must be zero.");
 }
 
