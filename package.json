@@ -1,0 +1,19 @@
+{
+  "name": "weierstrass",
+  "version": "0.0.1",
+  "description": "A Weierstrass transform library",
+  "main": "weierstrass.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "weierstrass",
+    "gauss"
+  ],
+  "author": "Ryan Marcus <ryan@rmarcus.info>",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "binarysearch": "^1.0.0",
+    "lodash": "^4.14.1"
+  }
+}
