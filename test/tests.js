@@ -41,6 +41,18 @@ describe("weierstrass transform", function() {
         assert(values[2] > values[3]);
         assert(values[3] > values[4]);
     });
+
+    it("should fail when given a single point", function() {
+        assert.throws(() => {
+            let f = ws.weierstrass([[0,0]]);
+        }, /at least two/);
+    });
+
+    it("should fail when given non-point", function() {
+        assert.throws(() => {
+            let f = ws.weierstrass(["a", [0,0]]);
+        }, /two items/);
+    });
 });
 
 

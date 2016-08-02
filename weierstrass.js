@@ -56,10 +56,28 @@ function simpsonsRule(func, a, b) {
     return (b - a)/6 * (func(a) + 4 * func((a + b)/2) + func(b));
 }
 
+function verifyPoints(points) {
+    if (points.length < 2)
+        throw "You must pass at least two points to take a Weierstrass transform";
+
+    for (let x of points) {
+        if (!_.isArray(x) || x.length != 2)
+            throw ("Each element of the input array must be a list with two items," +
+                   "but saw: " + JSON.stringify(x));
+    }
+
+    if (0.0 - _.first(points)[1] > 0.001)
+        throw ("The Y coordinate of the point with the minimal X coordinate must be zero.");
+
+    if (0.0 - _.last(points)[1] > 0.001)
+        throw ("The Y coordinate of the point with the maximal X coordinate must be zero.");
+}
 
 module.exports.weierstrass = weierstrass;
 function weierstrass(points, t=1, step=0.001) {
     points.sort((a,b) => a[0] - b[0]);
+    verifyPoints(points);
+    
     let linfunc = linearInterpolate(points);
     let minX = points[0][0];
     let maxX = _.last(points)[0];
@@ -76,4 +94,5 @@ function weierstrass(points, t=1, step=0.001) {
 
     };    
 }
+
 

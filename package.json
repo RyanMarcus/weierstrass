@@ -4,7 +4,7 @@
   "description": "A Weierstrass transform library",
   "main": "weierstrass.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha -C"
   },
   "keywords": [
     "weierstrass",
