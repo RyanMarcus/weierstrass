@@ -74,7 +74,7 @@ function verifyPoints(points) {
 }
 
 module.exports.weierstrass = weierstrass;
-function weierstrass(points, t=1, step=0.001) {
+function weierstrass(points, t=1, step=0.01) {
     points.sort((a,b) => a[0] - b[0]);
     verifyPoints(points);
     
