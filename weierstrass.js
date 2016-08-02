@@ -19,12 +19,16 @@
 // { end copyright } 
  
  
+ 
 "use strict";
 let bs = require("binarysearch");
 let _ = require("lodash");
 
 
-function linearIterpolate(points) {
+module.exports.linearInterpolate = linearInterpolate;
+function linearInterpolate(points) {
+    points.sort((a,b) => a[0] - b[0]);
+    
     return function(x) {
         // binary search through points, find the closest value to x
         let leftIdx = bs.closest(points, x, (val, find) => val[0] - find);
@@ -53,9 +57,10 @@ function simpsonsRule(func, a, b) {
 }
 
 
-function weierstrass(points, t, step=0.001) {
+module.exports.weierstrass = weierstrass;
+function weierstrass(points, t=1, step=0.001) {
     points.sort((a,b) => a[0] - b[0]);
-    let linfunc = linearIterpolate(points);
+    let linfunc = linearInterpolate(points);
     let minX = points[0][0];
     let maxX = _.last(points)[0];
     
@@ -72,22 +77,3 @@ function weierstrass(points, t, step=0.001) {
     };    
 }
 
-let pts = [[0, 0], [4, 4], [8, 0]];
-let li = linearIterpolate(pts);
-
-console.log(li(0));
-console.log(li(0.5));
-console.log(li(1));
-console.log(li(1.5));
-console.log(li(2.0));
-
-
-
-let ws = weierstrass(pts, 0.5);
-
-
-console.log(ws(0));
-console.log(ws(2));
-console.log(ws(4));
-console.log(ws(6));
-console.log(ws(8));

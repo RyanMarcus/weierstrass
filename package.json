@@ -15,5 +15,8 @@
   "dependencies": {
     "binarysearch": "^1.0.0",
     "lodash": "^4.14.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.0"
   }
 }
