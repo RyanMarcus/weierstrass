@@ -1,34 +1,38 @@
 {
-    "name": "weierstrass",
-    "version": "0.0.1",
-    "description": "A Weierstrass transform library",
-    "main": "weierstrass.js",
-    "engines": {
-        "node": ">=6.2.2"
-    },
-    "scripts": {
-        "test": "./node_modules/mocha/bin/mocha -C",
-        "hint": "./node_modules/jshint/bin/jshint *.js test/*.js"
-    },
-    "keywords": [
-        "weierstrass",
-        "gauss"
-    ],
-    "author": "Ryan Marcus <ryan@rmarcus.info>",
-    "license": "AGPL-3.0",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/RyanMarcus/weierstrass.git"
-    },
-    "dependencies": {
-        "binarysearch": "^1.0.0",
-        "lodash": "^4.14.1"
-    },
-    "devDependencies": {
-        "jshint": "^2.9.2",
-        "mocha": "^3.0.0"
-    },
-    "jshintConfig": {
-        "esversion": 6
-    }
+  "name": "weierstrass",
+  "version": "0.0.1",
+  "description": "A Weierstrass transform library",
+  "main": "weierstrass.js",
+  "engines": {
+    "node": ">=6.2.2"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha -C",
+    "hint": "./node_modules/jshint/bin/jshint *.js test/*.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "keywords": [
+    "weierstrass",
+    "gauss"
+  ],
+  "author": "Ryan Marcus <ryan@rmarcus.info>",
+  "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RyanMarcus/weierstrass.git"
+  },
+  "dependencies": {
+    "binarysearch": "^1.0.0",
+    "lodash": "^4.14.1",
+    "snyk": "^1.316.1"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.2",
+    "mocha": "^3.0.0"
+  },
+  "jshintConfig": {
+    "esversion": 6
+  },
+  "snyk": true
 }
